@@ -1,7 +1,11 @@
-import Vue from 'vue';
+import Vue    from 'vue';
 
-import mensaje from '~/components/mensaje.vue'
-import listBtn from '~/components/listBtn.vue'
+//import Mensaje from '~/components/mensaje.vue'
+//import ListBtn from '~/components/listBtn.vue'
+import Login  from '../components/Login';
+import Home   from '../components/Home';
 
-Vue.component('mensaje', mensaje);
-Vue.component('list-btn', listBtn);
+//Vue.component('mensaje',         Mensaje);
+//Vue.component('list-btn',        ListBtn);
+Vue.component('login-component', Login);
+Vue.component('home-component',  Home);

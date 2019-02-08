@@ -4,7 +4,7 @@
         <v-flex xs12>
         <v-card>
             
-            <v-toolbar class="red lighten-1 darken-3 white--text">
+            <v-toolbar class="green lighten-1 darken-1 white--text">
             <h3>Bancos</h3>
                 <v-spacer></v-spacer>
                 <v-btn fab @click="insItem" dark small class="success">

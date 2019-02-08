@@ -39,8 +39,9 @@
       fixed 
       app 
     >
-        <v-toolbar-title v-text="titulo"></v-toolbar-title>
-        
+        <v-toolbar-title class="yellow--text" v-text="titulo">
+          
+        </v-toolbar-title>
         <v-btn icon @click.stop="miniVariant = !miniVariant">
             <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
         </v-btn> 
@@ -65,9 +66,10 @@
     </v-toolbar>
 
     <v-content>
-        <v-container>
+        <v-container fluid>
+          
 
-            
+            <router-view></router-view>
 
         </v-container>
     </v-content>

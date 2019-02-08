@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Vue    from 'vue'
 import Router from 'vue-router'
-import Banco from '../pages/banco/index.vue'
-
 Vue.use(Router)
+
+import Banco from '../pages/banco/index.vue'
 
 export default new Router({
   mode: 'history',

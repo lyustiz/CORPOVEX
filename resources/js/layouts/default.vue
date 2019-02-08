@@ -64,7 +64,7 @@
     <v-content>
         <v-container>
 
-            <nuxt />
+           <router-view/>
 
         </v-container>
     </v-content>
