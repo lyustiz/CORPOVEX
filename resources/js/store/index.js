@@ -1,19 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-//import auth from './modules/auth'
-import msjHelper from './msj'
-//import users from './modules/users'
-
 
 Vue.use(Vuex)
+
+import msj from '../store/gral/mensaje'
 
 const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
   modules: {
-   //auth,
-    msjHelper,
-    //users
+    msj
   },
   strict: debug
 })

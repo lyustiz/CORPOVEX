@@ -2,16 +2,36 @@ import Vue    from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
 
-import Banco from '../pages/banco/index.vue'
+import Home from '../pages/home/index.vue'
+import Banco from '../pages/banco/list.vue'
+import BancoForm from '../pages/banco/form.vue'
+
+//router.addRoutes(routes: Array<RouteConfig>)
 
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Banco
+        path: '/',
+        name: 'home',
+        icon: 'bubble_chart',
+        component: Home,
+    },
+    {
+        path: '/banco',
+        name: 'banco',
+        icon: 'bubble_chart',
+        component: Banco,
+        children:
+        [
+            {
+                path: 'form',
+                name: 'bancoForm',
+                component: BancoForm
+            }
+        ]
+        
     },
    /* {
       path: '/about',

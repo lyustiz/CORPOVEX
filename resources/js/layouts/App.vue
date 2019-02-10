@@ -7,6 +7,7 @@
       v-model="drawer"
       fixed
       app
+      dark
     >
         <!--menu-->
         <v-list>
@@ -20,7 +21,7 @@
             >
                 <v-list-tile-action>
                     <v-icon v-html="item.icon"></v-icon>
-                </v-list-tile-action>
+                </v-list-tile-action> 
 
                 <v-list-tile-content>
                     <v-list-tile-title v-text="item.title"></v-list-tile-title>
@@ -40,8 +41,8 @@
       app 
     >
         <v-toolbar-title class="yellow--text" v-text="titulo">
-          
         </v-toolbar-title>
+        {{$App.name}}
         <v-btn icon @click.stop="miniVariant = !miniVariant">
             <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
         </v-btn> 
@@ -54,12 +55,12 @@
             <v-icon>help</v-icon>
         </v-btn>
         <v-btn icon >
-            <v-icon>exit</v-icon>
+            <v-icon>notification_important</v-icon>
         </v-btn>
 
         <v-form @submit.prevent="logout()">
             <v-btn icon type="submit">
-                <v-icon >logout</v-icon>
+                <v-icon >exit_to_app</v-icon>
             </v-btn>
         </v-form>
 
@@ -74,7 +75,7 @@
         </v-container>
     </v-content>
     
-    
+    <pre>{{menuItems}}</pre>
     
     <v-footer :fixed="fixed" app>
         <span>&copy; Bandes  {{ new Date().getFullYear() }}</span>
@@ -86,19 +87,35 @@
 
 <script>
   export default {
-    data () {
-      return {
-        clipped: true,
-        drawer: true,
-        fixed: false,
-        items: [
-          { icon: 'apps', title: 'Welcome', to: '/' },
-          { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' },
-          { icon: 'bubble_chart', title: 'Banco', to: '/banco' }
-        ],
-        miniVariant: false,
-        titulo: 'Transvalven'
-      }
+     data () {
+        return {
+            clipped: true,
+            drawer: true,
+            fixed: false,
+            items: [
+                { icon: 'insert_chart', title: 'Inicio', to: '/' },
+                { icon: 'account_balance', title: 'Banco', to: '/banco' }
+            ],
+            miniVariant: false,
+            titulo: 'Transvalven'
+        }
+    },
+    computed:
+    {
+        menuItems()
+        {
+            return 1//this.$router.options.routes
+        }
+
     }
   }
+
 </script>
+<style>
+  .v-list__tile--active{
+    color:#ffeb3b !important; 
+  }
+  .v-btn--floating{
+      padding: 10px !important;
+  }
+</style>

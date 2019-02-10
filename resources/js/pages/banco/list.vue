@@ -1,19 +1,7 @@
 <template>
-    <v-container fluid grid-list-md text-xs-center>
-        <v-layout row justify-center>
-        <v-flex xs12>
-        <v-card>
-            
-            <v-toolbar class="green lighten-1 darken-1 white--text">
-            <h3>Bancos</h3>
-                <v-spacer></v-spacer>
-                <v-btn fab @click="insItem" dark small class="success">
-                    <v-icon dark>add</v-icon>
-                </v-btn>
-            </v-toolbar>
 
-            <v-card-text>
-                
+    <list-container titulo="Banco" :head-color="$App.theme.headList">
+
             <v-flex xs12 xs6>
             <v-text-field
                 v-model="buscar"
@@ -43,13 +31,13 @@
                 <td class="text-xs-left">{{ item.item.id_grupo_banco }}</td>
                 <td class="text-xs-center"> 
                     {{ item.item.id_status }}
-                     <!-- status
+                     <!-- status -->
                     <v-switch 
                     v-model="item.item.id_status">
                     </v-switch> 
-                    -->
+                   
                 </td>
-                <!--acciones-->
+                <!--acciones -->
                 <td class="text-xs-left">
                     <list-btn @editar="updItem(item.item)" :del="false">
                     </list-btn>
@@ -66,28 +54,11 @@
             </template>
 
             </v-data-table>
-            </v-card-text>
+
             <mensaje></mensaje>
 
-        </v-card>
-        </v-flex>
-        </v-layout>
-    
-      <!--  <form-container :nb-accion="nb_accion" :modal="modal" @cerrarModal="cerrarModal">
-            <banco-form :accion="accion" :item="item" @cerrarModal="cerrarModal"></banco-form>
-        </form-container>
-
-        <dialogo 
-            :dialogo="dialogo" 
-            :mensaje="'Desea Eliminar el Banco: ' + item.nb_banco "
-            @delItem="delItem"
-            @delCancel="delCancel"
-        >
-        </dialogo>
-        -->
-        <mensaje></mensaje> 
-    </v-container>
-
+    </list-container>
+  
 </template>
 
 <script>
@@ -96,6 +67,10 @@ import axios from 'axios'
 //import listHelper from '../mixins/listHelper';
 
 export default {
+    created()
+    {
+        console.log(this.$App)
+    },
    //mixins:[ listHelper, withSnackbar],
     data () {
     return {

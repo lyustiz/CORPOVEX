@@ -38,7 +38,7 @@ export default {
 
     watch: {
 
-        accion: function (val) 
+        accion (val) 
         {
             this.btnAccion = val;
 
@@ -53,7 +53,7 @@ export default {
             
         },
 
-        item: function (val) {
+        item (val) {
             this.mapForm()
         }
     },

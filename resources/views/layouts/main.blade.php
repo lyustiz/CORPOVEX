@@ -21,9 +21,7 @@
 
         <v-app>
 
-            <v-container>
                 @yield('content')
-            </v-container>
 
         </v-app>
 
