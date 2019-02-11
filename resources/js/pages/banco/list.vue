@@ -63,8 +63,7 @@
 
 <script>
 import axios from 'axios'
-//import withSnackbar from '../mixins/msjHelper';
-//import listHelper from '../mixins/listHelper';
+//import listHelper from '@/mixins/listHelper';
 
 export default {
     created()

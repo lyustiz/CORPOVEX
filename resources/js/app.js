@@ -12,14 +12,14 @@ Vue.component('app', App)
 Vue.prototype.$App = Object.freeze({
     titulo:   'Transvalven',
     version:  '0.1',
-    basePath: '',
+    basePath: '/api/v1/',
     ApiUrl:   '127.0.0.1:8000/api/v1',
     theme:{ 
             principal:   'red darkness-3',
             textPpal:    'red--text',
-            headForm:    'light-green lighten-1',
+            headForm:    'green darken-3',
             textForm:    'white--text',
-            headList:    'light-green lighten-1',
+            headList:    'green darken-3',
             textList:    'white--text'
             }
     })
@@ -29,7 +29,11 @@ import './plugins/axios'
 import './plugins/components'
 import msjHelper from './minxins/msjHelper'
 
+ 
 const app = new Vue({
+  created(){
+    console.log(process.env)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+  },
     el: '#app',
     mixins:[msjHelper],
     store,

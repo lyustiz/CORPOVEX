@@ -97,7 +97,7 @@
                 { icon: 'account_balance', title: 'Banco', to: '/banco' }
             ],
             miniVariant: false,
-            titulo: 'Transvalven'
+            titulo: this.$App.titulo
         }
     },
     computed:

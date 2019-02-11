@@ -1,93 +1,60 @@
+import formatHelper from 'FormatHelper';
+
+
 export default {
-    created() {
+    mixins: [formatHelper],
+    created() 
+    {
         this.items  = this.list();
     },
     data() {
 
         return {
 
-            basePath: '/api/v1/',
-            id_usuario: this.$store.getters.user.id_usuario,
-            IsLoading: true,
+            basePath: this.$App.base,
+            idUsuario: this.$store.getters.user.id_usuario,
+            isLoading: true,
             modal: false,
             selected: [],
             items: '',
             item:  '',
-            buscar: '',
-            accion: '',
-            nb_accion: '',
-            dialogo: false,
+            search: '',
+            action: '',
+            nbAction: '',
+            dialog: false,
         }
-    },
-    filters: {
-
-        formDate: function (value) {
-
-            if (!value) return ''
-            value = value.toString();
-            return value.substr(8, 2)+'/'+value.substr(5, 2)+'/'+value.substr(0, 4);
-        },
-        formatDateTime: function (value) {
-
-            if (!value) return ''
-            value = value.toString();
-            return value.substr(8, 2)+'/'+value.substr(5, 2)+'/'+value.substr(0, 4)+' '+value.substr(12, 10);
-        },
-        formatNumber: function (value) 
-        {
-            let val = (value/1).toFixed(2).replace('.', ',')
-            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-        }
-
     },
     methods: {
-        formatNumber: function (value) 
+        closeModal()
         {
-            let val = (value/1).toFixed(2).replace('.', ',')
-            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-        },
-        formatDate (date) 
-        { 
-            if (!date) return null
-    
-            const [year, month, day] = date.split('-')
-            return `${day}/${month}/${year}`
-        },
-        cerrarModal(){
             this.modal  = false;
             this.item   = '';
             this.list();
-            this.accion = false;
+            this.action = false;
         },
-        insItem () {
-
+        insItem () 
+        {
             this.item = '';
-            this.nb_accion  = 'Agregar:';
-            this.accion     = 'ins';
+            this.nbAction  = 'Agregar:';
+            this.action     = 'ins';
             this.modal      = true;
-            
         },
-        updItem (item) {
-
-            this.nb_accion  = 'Editar:';
-            this.accion     = 'upd';
+        updItem (item) 
+        {
+            this.nbAction  = 'Editar:';
+            this.action     = 'upd';
             this.modal      = true;
             this.item       = item;
         },
-        delForm (item) {
-
-            this.dialogo = true;
+        delForm (item) 
+        {
+            this.dialog = true;
             this.item = item;
-            
         },
-        delCancel () {
-
-            this.dialogo = false;
-            
+        delCancel () 
+        {
+            this.dialog = false;
         }
-        
-
-   
     }
 
 }
