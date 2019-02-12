@@ -4,7 +4,7 @@
 
             <v-flex xs12 xs6>
             <v-text-field
-                v-model="buscar"
+                v-model="search"
                 append-icon="search"
                 label="Buscar"
                 single-line
@@ -16,10 +16,10 @@
             <v-data-table
             :headers="headers"
             :items  ="items"
-            :search ="buscar"
+            :search ="search"
             v-model ="selected"
             item-key="id_banco"
-            :loading="IsLoading"
+            :loading="isLoading"
             rows-per-page-text="Res. x Pag"
             disable-initial-sort
             >
@@ -46,7 +46,7 @@
             </template>
 
             <v-alert slot="no-results" :value="true" color="info" icon="info">
-                La busqueda "{{ buscar }}" Sin resultados
+                La busqueda "{{ search }}" Sin resultados
             </v-alert>
 
             <template slot="pageText" slot-scope="item">
@@ -55,22 +55,17 @@
 
             </v-data-table>
 
-            <mensaje></mensaje>
+            <base-mensaje></base-mensaje>
 
     </list-container>
   
 </template>
 
 <script>
-import axios from 'axios'
-//import listHelper from '@/mixins/listHelper';
+import listHelper from '~/minxins/listHelper';
 
 export default {
-    created()
-    {
-        console.log(this.$App)
-    },
-   //mixins:[ listHelper, withSnackbar],
+   mixins:[ listHelper],
     data () {
     return {
         headers: [
@@ -89,11 +84,11 @@ export default {
            axios.get('http://127.0.0.1:5400/api/banco')
             .then(respuesta => {
                 this.items = respuesta.data;
-                this.IsLoading = false
+                this.isLoading = false
             })
             .catch(error => {
                 this.verError(error)
-                this.IsLoading = false
+                this.isLoading = false
             })
         },
         delItem(){

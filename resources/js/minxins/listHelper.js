@@ -1,4 +1,4 @@
-import formatHelper from 'FormatHelper';
+import formatHelper from './FormatHelper';
 
 
 export default {
@@ -12,7 +12,7 @@ export default {
         return {
 
             basePath: this.$App.base,
-            idUsuario: this.$store.getters.user.id_usuario,
+            idUsuario: 1,//this.$store.getters.user.id_usuario,
             isLoading: true,
             modal: false,
             selected: [],

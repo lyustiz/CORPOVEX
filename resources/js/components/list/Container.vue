@@ -14,7 +14,7 @@
                                 
                                 <v-spacer></v-spacer>
                                 
-                                <v-btn icon  @click="ayuda" dark>
+                                <v-btn icon  @click="ayuda1" dark>
                                     <v-icon>help</v-icon>
                                 </v-btn>
                                 
@@ -36,6 +36,12 @@
 
 <script>
 export default {
-    props:['titulo', 'ayuda', 'HeadColor', 'TextColor' ]
+    props:['titulo', 'ayuda', 'HeadColor', 'TextColor' ],
+    methods: {
+        ayuda1()
+        {
+            return true
+        }
+    },
 }
 </script>

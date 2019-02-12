@@ -13,11 +13,11 @@
         <v-list>
             
             <v-list-tile
-              router
-              :to="item.to"
-              :key="i"
-              v-for="(item, i) in items"
-              exact
+            router
+            :to="item.to"
+            :key="i"
+            v-for="(item, i) in items"
+            exact
             >
                 <v-list-tile-action>
                     <v-icon v-html="item.icon"></v-icon>
@@ -34,15 +34,14 @@
     </v-navigation-drawer>
 
     <v-toolbar
-      :clipped-left="$vuetify.breakpoint.mdAndUp" 
-      color="green darken-3" 
-      dark 
-      fixed 
-      app 
+    :clipped-left="$vuetify.breakpoint.mdAndUp" 
+    color="green darken-3" 
+    dark 
+    fixed 
+    app 
     >
-        <v-toolbar-title class="yellow--text" v-text="titulo">
-        </v-toolbar-title>
-        {{$App.name}}
+        <v-toolbar-title :class="$App.theme.textPpal" v-text="$App.title"></v-toolbar-title>
+
         <v-btn icon @click.stop="miniVariant = !miniVariant">
             <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
         </v-btn> 
@@ -54,6 +53,7 @@
         <v-btn icon >
             <v-icon>help</v-icon>
         </v-btn>
+
         <v-btn icon >
             <v-icon>notification_important</v-icon>
         </v-btn>
@@ -78,7 +78,7 @@
     <pre>{{menuItems}}</pre>
     
     <v-footer :fixed="fixed" app>
-        <span>&copy; Bandes  {{ new Date().getFullYear() }}</span>
+        <span>&copy; {{$App.theme.headPpal}}  {{ new Date().getFullYear() }}</span>
     </v-footer>
 
   </v-app>
@@ -97,7 +97,6 @@
                 { icon: 'account_balance', title: 'Banco', to: '/banco' }
             ],
             miniVariant: false,
-            titulo: this.$App.titulo
         }
     },
     computed:
