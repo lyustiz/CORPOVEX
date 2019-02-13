@@ -20,7 +20,9 @@ Vue.prototype.$App = Object.freeze({
             headForm:    'green darken-3',
             textForm:    'white--text',
             headList:    'green darken-3',
-            textList:    'white--text'
+            textList:    'white--text',
+            headForm:    'blue darken-3', 
+            textForm:    'white--text',
             }
     })
 
@@ -28,6 +30,8 @@ Vue.prototype.$App = Object.freeze({
 import './plugins/axios'
 import './plugins/components'
 import msjHelper from './minxins/msjHelper'
+
+Vue.mixin(msjHelper)
 
  
 const app = new Vue({

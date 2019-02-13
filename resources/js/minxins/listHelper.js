@@ -19,13 +19,13 @@ export default {
             items: '',
             item:  '',
             search: '',
-            action: '',
-            nbAction: '',
+            accion: '',
+            nbAccion: '',
             dialog: false,
         }
     },
     methods: {
-        closeModal()
+        cerrarModal()
         {
             this.modal  = false;
             this.item   = '';

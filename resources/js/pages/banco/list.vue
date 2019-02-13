@@ -2,6 +2,11 @@
 
     <list-container titulo="Banco" :head-color="$App.theme.headList">
 
+        <template slot="tools">
+            <v-btn fab small color="success" @click="insItem()"><v-icon>add</v-icon></v-btn>
+        </template>
+
+
             <v-flex xs12 xs6>
             <v-text-field
                 v-model="search"
@@ -55,6 +60,10 @@
 
             </v-data-table>
 
+            <form-container :nb-accion="nbAccion" :modal="modal" @cerrarModal="cerrarModal" :head-color="$App.theme.headForm">
+                <banco-form :accion="accion" :item="item" @cerrarModal="cerrarModal"></banco-form>
+            </form-container>
+
             <base-mensaje></base-mensaje>
 
     </list-container>
@@ -63,9 +72,11 @@
 
 <script>
 import listHelper from '~/minxins/listHelper';
+import BancoForm  from './form';
 
 export default {
-   mixins:[ listHelper],
+    mixins:     [ listHelper],
+    components: { 'banco-form': BancoForm },
     data () {
     return {
         headers: [
@@ -75,7 +86,6 @@ export default {
         { text: 'Status',   value: 'id_status'  },
         { text: 'Acciones', value: 'id_status'  },
         ],
-
     }
     },
     methods:

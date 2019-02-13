@@ -1,97 +1,121 @@
-import { mapGetters } from 'vuex'
-
 export default {
-    computed: {
-        ...mapGetters([
-        'snackbarTimeout'
-        ])
+    computed:
+    {
+        msjTimeout(){ return this.$store.getters['msjTimeout'] }
     },
-    methods: {
-        showMessage (message) {
-        this.showMsj(message, 'success')
-        },
-        showError (error) {
-                    
-        if(error.hasOwnProperty('response'))
+    methods: 
+    {
+
+        verMensaje (message) 
         {
-        
-            let status = error.response.status;
-            let msg    = '';
+            this.mostrarBarraMsj(message, 'success')
+        },
 
-            switch (status) {
-            case 500:
-                msg = 'Error interno ->' + error.response.data.message
-                break;
-
-            case 404:
-                msg = 'Servicio No disponible'
-                break;
+        verError (error) 
+        {
+            console.log(error.response)
             
-            case 403:
-                msg = 'Sin autorizacion'
+            if(error.hasOwnProperty('response'))
+            {
+                if(error.response === undefined)
+                {
+                    this.mostrarBarraMsj( 'El servicio no Responde', 'error')
+                    return
+                }
+            
+                let status = error.response.status;
+                let msj    = '';
+    
+            switch (status) 
+            {
+                case 500:
+                msj = 'Error interno ->' + error.response.data.message
                 break;
     
-            case 401:
-                msg = 'Session invalida favor Ingresar nuevamente '
-                this.showMsj(msg, 'error')
+                case 404:
+                msj = 'Servicio No disponible'
+                break;
+                
+                case 403:
+                msj = 'Sin autorizacion'
+                break;
+    
+                case 401:
+                msj = 'Session invalida favor Ingresar nuevamente '
+                this.mostrarBarraMsj(msj, 'error')
                 window.location.href = '/'
                 break;
-
-            case 429:
+    
+                case 429:
                 for (var idx in error.response.data.errors) 
                 {
-                    msg = msg + error.response.data.errors[idx];
+                    msj = msj + error.response.data.errors[idx];
                 }
-                    msg = ( msg != '') ? msg :  'Servicio Ocupado favor Ingresar en unos Minutos'
+                msj = ( msj != '') ? msj :  'Servicio Ocupado favor Ingresar en unos Minutos'
                 break;
-
-            case 422:
+    
+                case 422:
                 for (var idx in error.response.data.errors) 
                 {
-                    msg = msg + error.response.data.errors[idx];
+                    msj = msj + error.response.data.errors[idx];
                 }
                 break;
-            
-            case 400:
+                
+                case 400:
                 for (var idx in error.response.data) 
                 {
-                    msg = msg + error.response.data[idx];
+                    msj = msj + error.response.data[idx];
                 }
                 break;
-
-            default:
+    
+                default:
                 for (var idx in error.response.data) 
                 {
-                    msg = msg + error.response.data[idx];
+                    msj = msj + error.response.data[idx];
                 }
                 break;
             }
-
-            this.showMsj( msg, 'error')
-
-        }else{
-
-            this.showMsj(error, 'error')
             
-        }
-        
+                this.mostrarBarraMsj( msj, 'error')
+    
+            }else
+            {
+                this.mostrarBarraMsj(error, 'error')  
+            }
+            
         },
-        cleanState () {
-        setTimeout(() => {
-            this.$store.commit(mutations.SET_MSJ_SHOW, false)
-        }, this.snackbarTimeout)
+
+        limpiarMsj () 
+        {
+            setTimeout( () => 
+            {
+                this.$store.commit('setMsjShow', false)
+                this.$store.commit('setMsjText', '')
+                this.$store.commit('setMsjSubText', '')
+            }, this.msjTimeout)
         },
-        showMsj (message, color) {
-        this.$store.commit(mutations.SET_MSJ_SHOW, true)
-        this.$store.commit(mutations.SET_MSJ_COLOR, color || 'error')
-        if (typeof message === 'string') {
-            this.$store.commit(mutations.SET_MSJ_TEXT, message)
-            this.cleanState()
-            return
-        }
-        this.$store.commit(mutations.SET_MSJ_TEXT, message.message)
-        if (message.response) this.$store.commit(mutations.SET_MSJ_SUBTEXT, message.response.data.message)
-        this.cleanState()
+
+        mostrarBarraMsj (message, color) 
+        {
+            this.$store.commit('setMsjShow', true)
+            this.$store.commit('setMsjColor', color || 'error')
+    
+            if (typeof message === 'string') 
+            {
+                this.$store.commit('setMsjText', message)
+                this.limpiarMsj()
+                return
+            }
+    
+            this.$store.commit('setMsjText', message.message)
+    
+            if (message.response)
+            {
+                this.$store.commit('setMsjSubText',message.response.data.message)
+            } 
+            
+            this.limpiarMsj()
         }
     }
 }
+  

@@ -3,7 +3,7 @@
             :timeout="timeoutMsj"
             :color="colorMsj"
             v-model="verMsj"
-            :multi-line="true"
+            :multi-line="false"
     >
         {{ txtMsj }}
         {{ subTxtMsj }}
@@ -20,28 +20,28 @@
     {
       verMsj()
       {
-        return this.$store.getters['gral/mensaje/msjShow']
+        return this.$store.getters['msjShow']
       },
       txtMsj()
       {
-        return this.$store.getters['gral/mensaje/msjText']
+        return this.$store.getters['msjText']
       },
       subTxtMsj()
       {
-        return this.$store.getters['gral/mensaje/msjSubtext']
+        return this.$store.getters['msjSubtext']
       },
       colorMsj()
       {
-        return this.$store.getters['gral/mensaje/msjColor']
+        return this.$store.getters['msjColor']
       },
       timeoutMsj()
       {
-        return this.$store.getters['gral/mensaje/msjTimeout']
+        return this.$store.getters['msjTimeout']
       }
     },
     methods: {
       cerrar () {
-        this.$store.commit('gral/mensaje/setMsjShow', false)
+        this.$store.commit('setMsjShow', false)
       }
     }
   }

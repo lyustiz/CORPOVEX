@@ -13,10 +13,8 @@
                                 <h3>{{titulo}}</h3>
                                 
                                 <v-spacer></v-spacer>
-                                
-                                <v-btn icon  @click="ayuda1" dark>
-                                    <v-icon>help</v-icon>
-                                </v-btn>
+
+                                <slot name="tools"></slot>
                                 
                             </v-toolbar>
 
@@ -36,12 +34,7 @@
 
 <script>
 export default {
+    name: 'list-container',
     props:['titulo', 'ayuda', 'HeadColor', 'TextColor' ],
-    methods: {
-        ayuda1()
-        {
-            return true
-        }
-    },
 }
 </script>

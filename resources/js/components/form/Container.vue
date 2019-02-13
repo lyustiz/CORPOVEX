@@ -1,41 +1,45 @@
 <template>
-    
-    <v-container fluid grid-list-md text-xs-center>
-            
-            <v-layout row justify-center>
 
-                <v-flex xs12>
-                        
-                        <v-card>
-                            
-                            <v-toolbar :class="HeadColor" dark>
-                                
-                                <h3>{{titulo}}</h3>
-                                
-                                <v-spacer></v-spacer>
-                                
-                                <v-btn fab @click="ayuda" small dark class="success">
-                                    <v-icon>add</v-icon>
-                                </v-btn>
-                                
-                            </v-toolbar>
+<v-dialog v-model="modal" width="98%" hide-overlay transition="dialog-bottom-transition">
+    <v-card>
 
-                            <v-card-text>
-                                <slot></slot>
-                            </v-card-text>
-                        
-                        </v-card>
+        <v-toolbar dark :color="HeadColor">
+           
+            <v-btn icon dark @click.native="cerrarModal">
+                <v-icon>close</v-icon>
+            </v-btn>
 
-                </v-flex>
+            <v-toolbar-title>
+                {{ nbAccion }}
+            </v-toolbar-title>
 
-            </v-layout>
-        
-    </v-container>      
+        </v-toolbar>
+
+        <v-card-text> 
+
+              <slot></slot>
+
+        </v-card-text>
+
+    </v-card>
+
+</v-dialog>
+
     
 </template>
 
 <script>
 export default {
-    props:['titulo', 'ayuda', 'HeadColor', 'TextColor' ]
+    name: 'form-container',
+    props:['nbAccion', 'modal', 'HeadColor', 'TextColor'],
+    methods:{
+        cerrarModal(){
+            this.$emit('cerrarModal');
+        }
+    }
 }
 </script>
+
+<style>
+
+</style>

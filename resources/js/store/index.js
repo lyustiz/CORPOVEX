@@ -3,13 +3,13 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-import msj from '../store/gral/mensaje'
+import mensaje from '../store/gral/mensaje'
 
 const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
-  modules: {
-    msj
-  },
-  strict: debug
+    modules: {
+        mensaje
+    },
+    strict: debug
 })
