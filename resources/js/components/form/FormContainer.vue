@@ -5,12 +5,12 @@
 
         <v-toolbar dark :color="HeadColor">
            
-            <v-btn icon dark @click.native="cerrarModal">
+            <v-btn icon dark @click.native="modalClose">
                 <v-icon>close</v-icon>
             </v-btn>
 
             <v-toolbar-title>
-                {{ nbAccion }}
+                {{ nbAction }}
             </v-toolbar-title>
 
         </v-toolbar>
@@ -31,7 +31,7 @@
 <script>
 export default {
     name: 'form-container',
-    props:['nbAccion', 'modal', 'HeadColor', 'TextColor'],
+    props:['nbAction', 'modal', 'HeadColor', 'TextColor'],
     methods:{
         cerrarModal(){
             this.$emit('cerrarModal');

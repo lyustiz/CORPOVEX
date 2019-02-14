@@ -2,7 +2,7 @@
 
     <list-container titulo="Banco" :head-color="$App.theme.headList">
 
-        <template slot="tools">
+        <template slot="HeadTools">
             <v-btn fab small color="success" @click="insItem()"><v-icon>add</v-icon></v-btn>
         </template>
 
@@ -37,9 +37,7 @@
                 <td class="text-xs-center"> 
                     {{ item.item.id_status }}
                      <!-- status -->
-                    <v-switch 
-                    v-model="item.item.id_status">
-                    </v-switch> 
+                    <v-switch v-model="item.item.id_status"></v-switch> 
                    
                 </td>
                 <!--acciones -->
@@ -60,11 +58,11 @@
 
             </v-data-table>
 
-            <form-container :nb-accion="nbAccion" :modal="modal" @cerrarModal="cerrarModal" :head-color="$App.theme.headForm">
+            <form-container :nb-accion="nbAccion" :modal="modal" @modalClose="modalClose" :head-color="$App.theme.headForm">
                 <banco-form :accion="accion" :item="item" @cerrarModal="cerrarModal"></banco-form>
             </form-container>
 
-            <base-mensaje></base-mensaje>
+            <app-mensaje></app-mensaje>
 
     </list-container>
   
@@ -72,7 +70,7 @@
 
 <script>
 import listHelper from '~/minxins/listHelper';
-import BancoForm  from './form';
+import BancoForm  from './BancoForm';
 
 export default {
     mixins:     [ listHelper],
@@ -91,7 +89,7 @@ export default {
     methods:
     {
         list () {
-           axios.get('http://127.0.0.1:5400/api/banco')
+           axios.get('api/banco')
             .then(respuesta => {
                 this.items = respuesta.data;
                 this.isLoading = false

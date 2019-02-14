@@ -41,9 +41,11 @@ export default {
                 break;
     
                 case 401:
-                msj = 'Session invalida favor Ingresar nuevamente '
-                this.mostrarBarraMsj(msj, 'error')
-                window.location.href = '/'
+                    msj = 'Session invalida favor Ingresar nuevamente '
+                    this.mostrarBarraMsj(msj, 'error')
+                    setTimeout(() => {
+                        window.location.href = '/login'
+                    }, 2000);
                 break;
     
                 case 429:

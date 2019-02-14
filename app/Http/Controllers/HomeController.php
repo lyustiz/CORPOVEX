@@ -25,4 +25,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function banco()
+    {
+        return [
+            ['id_banco' => 1], 
+            ['nb_banco' => 'Venezuela'] 
+        ];
+    }
 }

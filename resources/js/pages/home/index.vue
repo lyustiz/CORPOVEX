@@ -2,7 +2,7 @@
   
   <v-card>
     
-    <v-alert type="primary" :value="true">
+    <v-alert color="primary" :value="clipped">
       hello
     </v-alert>
   </v-card>

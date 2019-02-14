@@ -14,7 +14,7 @@
                                 
                                 <v-spacer></v-spacer>
 
-                                <slot name="tools"></slot>
+                                <slot name="HeadTools"></slot>
                                 
                             </v-toolbar>
 

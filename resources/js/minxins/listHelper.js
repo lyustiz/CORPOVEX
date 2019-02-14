@@ -1,6 +1,5 @@
 import formatHelper from './FormatHelper';
 
-
 export default {
     mixins: [formatHelper],
     created() 
@@ -11,21 +10,21 @@ export default {
 
         return {
 
-            basePath: this.$App.base,
-            idUsuario: 1,//this.$store.getters.user.id_usuario,
-            isLoading: true,
-            modal: false,
-            selected: [],
-            items: '',
-            item:  '',
-            search: '',
-            accion: '',
-            nbAccion: '',
-            dialog: false,
+            basePath:   this.$App.base,
+            idUsuario:  1,//this.$store.getters.user.id_usuario,
+            isLoading:  true,
+            modal:      false,
+            selected:   [],
+            items:      '',
+            item:       '',
+            search:     '',
+            accion:     '',
+            nbAccion:   '',
+            dialog:     false,
         }
     },
     methods: {
-        cerrarModal()
+        modalClose()
         {
             this.modal  = false;
             this.item   = '';
