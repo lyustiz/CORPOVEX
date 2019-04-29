@@ -6,6 +6,9 @@ import Home       from '../pages/home/index.vue'
 import Banco      from '../pages/banco/BancoList.vue'
 import BancoForm  from '../pages/banco/BancoForm.vue'
 
+import OfertaComercial      from '../pages/ofertaComercial/OfertaComercialList.vue'
+import OfertaComercialForm  from '../pages/ofertaComercial/OfertaComercialForm.vue'
+
 //router.addRoutes(routes: Array<RouteConfig>)
 
 export default new Router({
@@ -31,8 +34,21 @@ export default new Router({
                 component: BancoForm
             }
         ]
-        
     },
+    {
+      path: '/ofertaComercial',
+      name: 'ofertaComercial',
+      icon: 'bubble_chart',
+      component: OfertaComercial,
+      children:
+      [
+          {
+              path: 'form',
+              name: 'ofertaComercialForm',
+              component: OfertaComercialForm
+          }
+      ]
+  },
    /* {
       path: '/about',
       name: 'about',

@@ -4,14 +4,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-  <!-- import descargar fonts de material Icom -->
+<!-- Css Principal -->
 <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+<!-- Material Icons -->
 <link rel="stylesheet" href="/assets/googlefonts/css/css.css">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!--css-->
-    @show
+<!-- CSRF Token -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
     
 </head>
 
@@ -19,11 +19,7 @@
 
    <div id="app">
 
-        <v-app>
-
-                @yield('content')
-
-        </v-app>
+            @yield('content')
 
     </div>
 

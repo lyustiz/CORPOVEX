@@ -5,35 +5,37 @@ import store    from './store'
 
 Vue.use(Vuetify);
 
+/** Componente Ppal   **/
 import App from './layouts/App.vue'
 Vue.component('app', App)
 
 /** Config **/
 Vue.prototype.$App = Object.freeze({
-    title:   'Transvalven',
+    title:    'Corpovex',
     version:  '0.1',
     basePath: '/api/v1/',
     ApiUrl:   '127.0.0.1:8000/api/v1',
+    debug:    false,
     theme:{ 
-            headPpal:    'red darkness-3',
-            textPpal:    'white--text',
-            headForm:    'green darken-3',
-            textForm:    'white--text',
-            headList:    'green darken-3',
-            textList:    'white--text',
-            headForm:    'blue darken-3', 
-            textForm:    'white--text',
+            headPpal:  'red darkness-3',
+            textPpal:  'white--text',
+            headForm:  'blue',
+            textForm:  'white--text',
+            headList:  'blue darken-3',
+            textList:  'white--text',
+            headModal: 'red', 
+            textModal: 'white--text',
             }
     })
 
 /** Plugins **/
 import './plugins/axios'
 import './plugins/components'
-import msjHelper from './minxins/msjHelper'
 
+/** Minxins **/
+import msjHelper from './mixins/msjHelper'
 Vue.mixin(msjHelper)
 
- 
 const app = new Vue({
     el: '#app',
     mixins:[msjHelper],

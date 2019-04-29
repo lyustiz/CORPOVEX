@@ -1,8 +1,8 @@
 <template>
     
-    <v-container fluid grid-list-md text-xs-center>
+    <v-container fluid>
             
-            <v-layout row justify-center>
+            <v-layout row >
 
                 <v-flex xs12>
                         

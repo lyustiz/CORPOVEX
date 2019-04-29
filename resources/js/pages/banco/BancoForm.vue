@@ -1,81 +1,117 @@
 <template>
 <div>   
 
-    <!--<v-form ref="form" v-model="valido" lazy-validation>
-        <v-card>
-            
-            <v-card-title class="light-blue darken-3 white--text">
-                <h2>Pago</h2>
-            </v-card-title>
-            
-            <v-card-text>
+    <form-container :titulo="titulo" :head-color="$App.theme.headForm">
+
+        <v-form ref="form" v-model="valido" lazy-validation>
+
             <v-layout wrap>
             
-            <v-flex xs12 sm6>  
-                <v-select
-                :items="listas.tipoPago"
-                item-text="nb_tipo_pago"
-                item-value="id_tipo_pago"
-                v-model="form.id_tipo_pago"
-                :rules="rules.pagoTotal"
-                label="Tipo de Pago"
-                autocomplete
-                required
-                @input="tipoPago"
-                ></v-select>
-            </v-flex>
-                
-            </v-card-text>
-        </v-card>
-    </v-form>-->
+                <v-flex xs12 sm6>  
+                   <v-text-field
+                       label="Nombre Banco"
+                       v-model="form.nb_banco"
+                   ></v-text-field>
+                </v-flex>
+
+                <v-flex xs12 sm6>  
+                   <v-text-field
+                       label="Nombre Banco"
+                       v-model="form.nb_banco"
+                   ></v-text-field>
+                </v-flex>
+
+                <v-flex xs12 sm6>  
+                   <v-text-field
+                       label="Nombre Banco"
+                       v-model="form.nb_banco"
+                   ></v-text-field>
+                </v-flex>
+
+                <v-flex xs12 sm6>  
+                   <v-text-field
+                       label="Nombre Banco"
+                       v-model="form.nb_banco"
+                   ></v-text-field>
+                </v-flex>
+
+                <v-flex xs12 sm6>  
+                    <v-select
+                        label="Tipo de Banco"
+                        v-model="form.id_tipo_banco"
+                        :items="['nacional', 'internacional' ]"
+                        :rules="rules.requerido"
+                    ></v-select>
+                </v-flex>
+
+                <v-flex xs12>  
+                    <v-textarea
+                        label="Observaciones"
+                        v-model="form.tx_observaciones"
+                    ></v-textarea>
+                </v-flex>
+
+             
+
+            </v-layout>
+
+     </v-form>
+
+    <template slot="buttons">
+        <form-buttons
+            @update="update()"
+            @store="store()"
+            @clear="clear()"
+            @cancel="cancel()"
+            :btnAccion="btnAccion"
+            :valido="valido"
+        ></form-buttons>
+    </template>
+
+    </form-container>
+    
+    <pre v-if="$App.debug">{{ $props }}</pre>
+
 </div> 
 </template>
 
 <script>
+
+import formHelper from '~/mixins/formHelper';
+
 export default {
-    tabla: 'pago',
-            pagoTotal: false,
-            pickers: {
-                fe_liq_bcv: false,
-                fe_pago:    false
-            },
-            tasaReadOnly: false,
-            esquema: 'Solicitud',
+    mixins: [formHelper],
+    data(){
+        return{
+            tabla: 'pago',
             form:{
-                id_instruccion:  '',
-                fe_liq_bcv:      '',
                 id_banco:        '',
-                fe_pago:         '',
-                id_moneda:       '',
-                mo_tasa:         '',
-                mo_final_pago:   '',
-                id_tipo_pago:    '',
-                id_ente:         '',
+                nb_banco:        '',
+                id_grupo_banco:  '',
+                id_tipo_banco:   '',
                 tx_observaciones:'',
                 id_usuario:      '',
                 id_status:       '',
             },
             listas:{
-                banco:    ['/grupo/1'],
-                moneda:   [],
-                tipoPago: [],
-                ente:     ['/grupo/6']
-                //status:   ['/grupo/3'],
+                grupoBanco: ['/grupo/1'],
+                tipoBanco:  ['/tipo/1'],
+                status:     ['/grupo/3'],
             },
-            rules:{
-                montoPago: [
-                    v => !!v || 'Indique Monto',
-                    v => (Number(v) > this.moPendiente) 
-                         ? `Monto mayor al disponible ${this.moPendiente}` 
-                         : true
-                   ],
-                pagoTotal: [
-                    v => !!v || 'Seleccione una Opcion (Campo Requerido)',
-                    v => (Number(v) == 1 && this.montos.pagado > 0 && this.montos.pagado && this.item.id_tipo_pago != 1) 
-                         ? 'Ya existe pagos parciales'
-                         : true
-                   ],
-            },
+        }
+    },
+    methods:
+    {
+        update()
+        {
+
+        },
+        store()
+        {
+
+        }
+
+    }            
 }
 </script>
 

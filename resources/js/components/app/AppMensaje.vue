@@ -2,12 +2,12 @@
     <v-snackbar
             :timeout="timeoutMsj"
             :color="colorMsj"
-            v-model="verMsj"
+            v-model="showMsj"
             :multi-line="false"
     >
         {{ txtMsj }}
         {{ subTxtMsj }}
-        <v-btn dark flat @click.native="cerrar">
+        <v-btn dark flat @click.native="closeMsj()">
           <v-icon>close</v-icon>
         </v-btn>
     </v-snackbar>
@@ -18,7 +18,7 @@
   export default {
     computed:
     {
-      verMsj()
+      showMsj()
       {
         return this.$store.getters['msjShow']
       },
@@ -40,7 +40,7 @@
       }
     },
     methods: {
-      cerrar () {
+      closeMsj () {
         this.$store.commit('setMsjShow', false)
       }
     }

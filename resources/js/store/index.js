@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-import mensaje from '../store/gral/mensaje'
+import mensaje from '../store/app/mensaje'
 
 const debug = process.env.NODE_ENV !== 'production'
 
