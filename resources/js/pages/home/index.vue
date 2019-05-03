@@ -121,31 +121,26 @@
     </v-flex>
 
 
-     </v-layout>
-    <v-card>
+    </v-layout>
 
-       <v-card-text>
-        <br>
-        <br>
-       </v-card-text>
-       
-     </v-card>
-     <v-layout row wrap>
-       
-     
 
-    <v-flex xs12>
+
+    
+    <v-layout row wrap mt-2>
+       
+    
+    <v-flex xs12 >
       <v-card class="mx-auto text-xs-center">
         <v-card-text>
           
         
         <v-progress-circular
-      :rotate="360"
-      :size="200"
-      :width="25"
-      :value="value"
-      color="teal"
-    >
+        :rotate="360"
+        :size="200"
+        :width="25"
+        :value="value"
+        color="teal"
+      >
       {{ value }}%
     </v-progress-circular>
 
@@ -230,7 +225,7 @@
     }
   }
 </script>
-<style>
+<style scope>
 .v-sheet--offset {
     top: -24px;
     position: relative;

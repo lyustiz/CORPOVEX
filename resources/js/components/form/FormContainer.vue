@@ -6,17 +6,16 @@
 
                 <v-flex xs12>
                         
-                        <v-card>
-                            
-                            <v-toolbar :class="HeadColor" dark>
-                                
-                                <h2>{{titulo}}</h2>
+                        <v-card >
+                            <!-- <v-card-title dark> 
+
+                                 <h3 class="text--white">{{titulo}}</h3> 
                                 
                                 <v-spacer></v-spacer>
 
                                 <slot name="HeadTools"></slot>
-                                
-                            </v-toolbar>
+
+                            </v-card-title> -->
 
                             <v-card-text>
                                 <slot></slot>

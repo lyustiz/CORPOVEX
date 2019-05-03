@@ -57,7 +57,7 @@
     <!--Contenido-->
     <v-content>
 
-            <transition name="fade" appear>
+            <transition name="fade" mode="out-in">
                 <router-view></router-view>
             </transition>
 
