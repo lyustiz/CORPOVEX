@@ -31,8 +31,14 @@
             >
 
                 <template slot="items" slot-scope="item">
+
+                    <td class="text-xs-left"  @click="item.expanded = !item.expanded">
+                    <v-btn flat icon color="primary">
+                        <v-icon>touch_app</v-icon>
+                    </v-btn>
+                    {{ item.item.nu_oferta_comercial }}
+                    </td>
                     
-                    <td class="text-xs-left">{{ item.item.nu_oferta_comercial }}</td>
                     <td class="text-xs-left">{{ item.item.fe_oferta_comercial }}</td>
                     <td class="text-xs-left">{{ item.item.fe_validez }}</td>
                     <td class="text-xs-center"> {{ item.item.nu_doc_condiciones }} </td>
@@ -41,6 +47,14 @@
                         <list-buttons @editar="updItem(item.item)" @eliminar="delForm(item.item)" ></list-buttons>
                     </td>
 
+                </template>
+
+                <template slot="expand" slot-scope="item">
+                    <v-card flat>
+                        <v-card-text>
+                            <oferta-comercial-detail :item="item"></oferta-comercial-detail>
+                        </v-card-text>
+                    </v-card>
                 </template>
 
                 <v-alert slot="no-results" :value="true" color="info" icon="info">
@@ -86,10 +100,13 @@
 <script>
 import listHelper from '~/mixins/listHelper';
 import OfertaComercialForm  from './OfertaComercialForm';
+import OfertaComercialDetail  from './OfertaComercialDetail';
 
 export default {
     mixins:     [ listHelper],
-    components: { 'oferta-comercial-form': OfertaComercialForm },
+    components: { 'oferta-comercial-form': OfertaComercialForm, 
+                  'oferta-comercial-detail': OfertaComercialDetail 
+                },
     data () {
     return {
         titulo: 'Oferta Comercial',
